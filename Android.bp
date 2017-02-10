@@ -358,7 +358,7 @@ android_app {
 // Build rule for Quickstep app.
 android_app {
     name: "Launcher3QuickStep",
-
+    certificate: "platform",
     static_libs: ["Launcher3QuickStepLib"],
     optimize: {
         enabled: false,
