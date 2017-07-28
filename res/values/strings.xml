@@ -272,4 +272,6 @@
     <string name="ok">Ok</string>
     <string name="icon_label">Label</string>
     <string name="loading">Loading, please wait</string>
+
+    <string name="search_bar_title">Show search bar</string>
 </resources>
