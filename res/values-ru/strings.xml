@@ -104,4 +104,20 @@
     <string name="widget_resized" msgid="9130327887929620">"Изменен размер виджета: до <xliff:g id="NUMBER_0">%1$s</xliff:g> в ширину и <xliff:g id="NUMBER_1">%2$s</xliff:g> в высоту"</string>
     <string name="action_deep_shortcut" msgid="2864038805849372848">"Ярлыки"</string>
     <string name="shortcuts_menu_description" msgid="406159963824238648">"Количество ярлыков для приложения \"<xliff:g id="APP_NAME">%2$s</xliff:g>\": <xliff:g id="NUMBER_OF_SHORTCUTS">%1$d</xliff:g>"</string>
+
+    <!-- Icon pack -->
+    <string name="default_iconpack_title">По умолчанию</string>
+    <string name="icons_pack_name">Набор значков</string>
+    <string name="edit_drop_target_label">Редактировать</string>
+    <string name="edit_app">Редактировать</string>
+    <string name="reset_icon">Сброс</string>
+    <string name="customize">Кастомизация</string>
+    <string name="visual">Внешний вид</string>
+    <string name="all_icons">Все значки</string>
+    <string name="similar_icons">Похожие значки</string>
+    <string name="ok">Ok</string>
+    <string name="icon_label">Название</string>
+    <string name="loading">Пожалуйста, подождите</string>
+
+    <string name="search_bar_title">Отображать строку поиска</string>
 </resources>
