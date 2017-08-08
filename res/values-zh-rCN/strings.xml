@@ -19,7 +19,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" msgid="649227358658669779">"Launcher3"</string>
+    <string name="app_name" msgid="649227358658669779">"Nitrogen 桌面"</string>
     <string name="folder_name" msgid="7371454440695724752"></string>
     <string name="work_folder_name" msgid="3753320833950115786">"Work"</string>
     <string name="activity_not_found" msgid="8071924732094499514">"未安装该应用。"</string>
@@ -104,4 +104,20 @@
     <string name="widget_resized" msgid="9130327887929620">"小部件尺寸已调整为：宽度 <xliff:g id="NUMBER_0">%1$s</xliff:g>，高度 <xliff:g id="NUMBER_1">%2$s</xliff:g>"</string>
     <string name="action_deep_shortcut" msgid="2864038805849372848">"快捷方式"</string>
     <string name="shortcuts_menu_description" msgid="406159963824238648">"<xliff:g id="APP_NAME">%2$s</xliff:g>有 <xliff:g id="NUMBER_OF_SHORTCUTS">%1$d</xliff:g> 个快捷方式"</string>
+
+    <!-- Icon pack -->
+    <string name="default_iconpack_title">默认</string>
+    <string name="icons_pack_name">图标包</string>
+    <string name="edit_drop_target_label">编辑</string>
+    <string name="edit_app">编辑</string>
+    <string name="reset_icon">重置</string>
+    <string name="customize">定制</string>
+    <string name="visual">视觉</string>
+    <string name="all_icons">所有图标</string>
+    <string name="similar_icons">其它图标</string>
+    <string name="ok">Ok</string>
+    <string name="icon_label">标签</string>
+    <string name="loading">加载中,请稍后...</string>
+
+    <string name="search_bar_title">显示搜索栏</string>
 </resources>
