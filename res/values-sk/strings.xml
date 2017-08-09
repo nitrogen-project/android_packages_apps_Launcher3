@@ -117,7 +117,7 @@
     <string name="similar_icons">Podobné ikony</string>
     <string name="ok">OK</string>
     <string name="icon_label">Názov</string>
-    <string name="loading">Prosím, vyčkajte</string>
+    <string name="loading">Prosím, čakajte</string>
 
     <string name="search_bar_title">Zobraziť vyhľadávací panel</string>
 </resources>
