@@ -19,7 +19,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" msgid="649227358658669779">"Launcher3"</string>
+    <string name="app_name" msgid="649227358658669779">"Spúšťač Nitrogen"</string>
     <string name="folder_name" msgid="7371454440695724752"></string>
     <string name="work_folder_name" msgid="3753320833950115786">"Pracovné"</string>
     <string name="activity_not_found" msgid="8071924732094499514">"Aplikácia nie je nainštalovaná."</string>
@@ -104,4 +104,20 @@
     <string name="widget_resized" msgid="9130327887929620">"Veľkosť miniaplikácie bola zmenená na <xliff:g id="NUMBER_0">%1$s</xliff:g> x <xliff:g id="NUMBER_1">%2$s</xliff:g> (šírka x výška)"</string>
     <string name="action_deep_shortcut" msgid="2864038805849372848">"Skratky"</string>
     <string name="shortcuts_menu_description" msgid="406159963824238648">"Počet skratiek aplikácie <xliff:g id="APP_NAME">%2$s</xliff:g>: <xliff:g id="NUMBER_OF_SHORTCUTS">%1$d</xliff:g>"</string>
+	
+	 <!-- Icon pack -->
+    <string name="default_iconpack_title">Predvolené</string>
+    <string name="icons_pack_name">Balíček ikon</string>
+    <string name="edit_drop_target_label">Editovať</string>
+    <string name="edit_app">Editovať</string>
+    <string name="reset_icon">Resetovať</string>
+    <string name="customize">Prispôsobenie</string>
+    <string name="visual">Vzhľad</string>
+    <string name="all_icons">Všetky ikony</string>
+    <string name="similar_icons">Podobné ikony</string>
+    <string name="ok">OK</string>
+    <string name="icon_label">Názov</string>
+    <string name="loading">Prosím, čakajte</string>
+
+    <string name="search_bar_title">Zobraziť vyhľadávací panel</string>
 </resources>
