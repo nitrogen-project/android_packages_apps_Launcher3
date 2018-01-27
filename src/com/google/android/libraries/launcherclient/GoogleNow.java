@@ -19,6 +19,9 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import aidl.ILauncherOverlay;
+import aidl.ILauncherOverlayCallback;
+
 public class GoogleNow {
     private static int API_VERSION = -1;
     private int mFlags;

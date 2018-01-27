@@ -36,6 +36,12 @@ LOCAL_SRC_FILES := \
     $(call all-proto-files-under, protos) \
     $(call all-proto-files-under, proto_overrides)
 
+LOCAL_AIDL_INCLUDES := src/aidl
+
+LOCAL_SRC_FILES += \
+    src/aidl/ILauncherOverlayCallback.aidl \
+    src/aidl/ILauncherOverlay.aidl
+
 LOCAL_CERTIFICATE := platform
 
 LOCAL_RESOURCE_DIR := \
