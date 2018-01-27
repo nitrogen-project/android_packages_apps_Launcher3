@@ -135,6 +135,9 @@ public abstract class AbstractQsbLayout extends FrameLayout implements LauncherL
         mSrcRect.bottom = height2;
         mDestRect.top = (float) (getPaddingTop() - ((height2 - height) / 2));
         mDestRect.bottom = ((float) height2) + mDestRect.top;
+        if (height % 2 == 0) {
+            mDestRect.bottom += 1f;
+        }
         float f = (float) ((width - i) / 2);
         int i2 = width / 2;
         float paddingLeft = ((float) getPaddingLeft()) - f;
