@@ -166,4 +166,6 @@
     <string name="hidden_app">Все приложения</string>
     <string name="hide_selected">Скрыть выбранные приложения</string>
     <string name="more">Больше</string>
+    <string name="reset_hidden_apps">Сброс</string>
+    <string name="reset_hidden_apps_toast">Скрытые приложения теперь доступны</string>
 </resources>
