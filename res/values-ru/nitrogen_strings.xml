@@ -28,4 +28,11 @@
 
     <!-- Google Feed -->
     <string name="settings_feed">Включить Google Feed</string>
+
+    <!-- Show labels on icon -->
+    <string name="desktop_show_label_title">Подписи значков на рабочем столе</string>
+    <string name="desktop_show_label_summary">Отображать подписи под значками на рабочем столе</string>
+    <string name="allapps_show_label_title">Подписи значков в меню приложений</string>
+    <string name="allapps_show_label_summary">Отображать подписи под значками в меню приложений</string>
 </resources>
+
