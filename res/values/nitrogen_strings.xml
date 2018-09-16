@@ -34,4 +34,8 @@
     <string name="desktop_show_label_summary">Show labels below the icons on desktop</string>
     <string name="allapps_show_label_title">AppDrawer Apps Labels</string>
     <string name="allapps_show_label_summary">Show labels below the icons in app drawer</string>
+
+    <!-- Gestures -->
+    <string name="allow_swipe_down_clearall_title">Clear all on swipe down from recents view</string>
+    <string name="allow_swipe_down_clearall_desc">Doesn\'t works if P navbar gestures are enabled</string>
 </resources>

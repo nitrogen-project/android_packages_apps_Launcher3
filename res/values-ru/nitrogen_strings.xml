@@ -34,5 +34,9 @@
     <string name="desktop_show_label_summary">Отображать подписи под значками на рабочем столе</string>
     <string name="allapps_show_label_title">Подписи значков в меню приложений</string>
     <string name="allapps_show_label_summary">Отображать подписи под значками в меню приложений</string>
+
+    <!-- Gestures -->
+    <string name="allow_swipe_down_clearall_title">Очистить все по свайпу вниз в меню недавних приложений</string>
+    <string name="allow_swipe_down_clearall_desc">Не работает при включенных жестах навигации Android P</string>
 </resources>
 
