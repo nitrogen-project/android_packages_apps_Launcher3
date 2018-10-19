@@ -24,7 +24,7 @@
     <string name="home_category_title">Рабочий стол</string>
     <string name="home_category_summary">Настройка панели Google Now и другое</string>
     <string name="icons_category_title">Значки</string>
-    <string name="icons_category_summary">Настройки формы значков и другое</string>
+    <string name="icons_category_summary">Настройки формы, размера значков и другое</string>
     <string name="app_drawer_category_title">Меню приложений</string>
     <string name="app_drawer_category_summary">Настройки меню приложений</string>
     <string name="gestures_category_title">Жесты</string>
@@ -32,10 +32,14 @@
 
     <!-- Sub categories -->
     <string name="home_grid_title">Сетка приложений</string>
+    <string name="icon_layout_title">Внешний вид значков</string>
 
     <!-- Icon packs -->
     <string name="icon_pack">Набор значков</string>
-    <string name="icon_pack_summary">Выберите пользовательский набор значков</string>
+    <string name="icon_pack_summary">Измените вид значков ваших приложений</string>
+
+    <!-- Icon shape -->
+    <string name="icon_shape_override_label_custom">Форма значков</string>
 
     <!-- Icon size -->
     <string name="icon_size_title">Размер значков</string>
@@ -47,7 +51,7 @@
 
     <!-- Gestures -->
     <string name="allow_swipe_down_clearall_title">Очистить все в меню недавних приложений</string>
-    <string name="allow_swipe_down_clearall_desc">Проведите вертикально вниз в меню недавних приложений для очистки всех приложений.\n\nНе работает при включенных жестах навигации Android P</string>
+    <string name="allow_swipe_down_clearall_desc">Проведите вертикально вниз в меню недавних приложений для очистки всех приложений</string>
 
     <!-- Google Feed -->
     <string name="google_feed_title">Панель Google Now</string>
