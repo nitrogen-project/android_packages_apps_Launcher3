@@ -76,6 +76,8 @@ public class SettingsActivity extends Activity
     public static final String KEY_MINUS_ONE = "pref_enable_minus_one";
     public static final String KEY_TRUST_APPS = "pref_trust_apps";
 
+    public static boolean restartNeeded = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,15 +100,7 @@ public class SettingsActivity extends Activity
     }
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (Utilities.KEY_SHOW_SEARCHBAR.equals(key)) {
-                Utilities.restart(this);
-        } else if (Utilities.KEY_DT_GESTURE.equals(key)) {
-                Utilities.restart(this);
-        } else  if (Utilities.KEY_NOTIFICATION_GESTURE.equals(key)) {
-                Utilities.restart(this);
-        } else if (KEY_FEED_INTEGRATION.equals(key)) {
-                Utilities.restart(this);
-        }
+        restartNeeded = true;
     }
 
     private boolean startFragment(String fragment, Bundle args, String key) {
@@ -165,6 +159,14 @@ public class SettingsActivity extends Activity
 
             getPreferenceManager().setSharedPreferencesName(LauncherFiles.SHARED_PREFERENCES_KEY);
             setPreferencesFromResource(R.xml.launcher_preferences, rootKey);
+
+            HomeKeyWatcher mHomeKeyListener = new HomeKeyWatcher(getActivity());
+            mHomeKeyListener.setOnHomePressedListener(() -> {
+                if (restartNeeded) {
+                    Utilities.restart(getActivity());
+                }
+            });
+            mHomeKeyListener.startWatch();
 
             PreferenceScreen screen = getPreferenceScreen();
             for (int i = screen.getPreferenceCount() - 1; i >= 0; i--) {
@@ -289,6 +291,9 @@ public class SettingsActivity extends Activity
                 mNotificationDotsObserver = null;
             }
             super.onDestroy();
+            if (restartNeeded) {
+                Utilities.restart(getActivity());
+            }
         }
     }
 }
