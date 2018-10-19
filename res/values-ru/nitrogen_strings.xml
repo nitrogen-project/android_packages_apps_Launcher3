@@ -17,26 +17,39 @@
 */
 -->
 <resources>
-    <!-- Grid -->
-    <string name="num_default">По умолчанию</string>
-    <string name="grid_category_title">Столбцы и ряды</string>
-    <string name="number_of_columns_title">Количество столбцов в меню приложений</string>
-    <string name="number_of_rows_title">Количество рядов в меню приложений</string>
-    <string name="number_of_hotseat_title">Количество значков док-бара</string>
-    <string name="state_loading">Применение\u2026</string>
+    <!-- General -->
+    <string name="settings_title">Настройки</string>
+
+    <!-- Categories -->
+    <string name="home_category_title">Рабочий стол</string>
+    <string name="home_category_summary">Настройка панели Google Now и другое</string>
+    <string name="icons_category_title">Значки</string>
+    <string name="icons_category_summary">Настройки формы значков и другое</string>
     <string name="app_drawer_category_title">Меню приложений</string>
+    <string name="app_drawer_category_summary">Настройки меню приложений</string>
+    <string name="gestures_category_title">Жесты</string>
+    <string name="gestures_category_summary">Дополнительные улучшения</string>
 
-    <!-- Google Feed -->
-    <string name="settings_feed">Включить Google Feed</string>
-
-    <!-- Show labels on icon -->
-    <string name="desktop_show_label_title">Подписи значков на рабочем столе</string>
-    <string name="desktop_show_label_summary">Отображать подписи под значками на рабочем столе</string>
-    <string name="allapps_show_label_title">Подписи значков в меню приложений</string>
-    <string name="allapps_show_label_summary">Отображать подписи под значками в меню приложений</string>
+    <!-- Sub categories -->
+    <string name="home_grid_title">Сетка приложений</string>
 
     <!-- Gestures -->
-    <string name="allow_swipe_down_clearall_title">Очистить все по свайпу вниз в меню недавних приложений</string>
-    <string name="allow_swipe_down_clearall_desc">Не работает при включенных жестах навигации Android P</string>
-</resources>
+    <string name="allow_swipe_down_clearall_title">Очистить все в меню недавних приложений</string>
+    <string name="allow_swipe_down_clearall_desc">Проведите вертикально вниз в меню недавних приложений для очистки всех приложений.\n\nНе работает при включенных жестах навигации Android P</string>
 
+    <!-- Google Feed -->
+    <string name="google_feed_title">Панель Google Now</string>
+    <string name="google_feed_summary">Проведите вправо на рабочем столе для доступа к панели Google Now</string>
+
+    <!-- Grid -->
+    <string name="num_default">По умолчанию</string>
+    <string name="number_of_columns_title">Количество столбцов</string>
+    <string name="number_of_rows_title">Количество рядов</string>
+    <string name="number_of_hotseat_title">Количество значков док-бара</string>
+    <string name="state_loading">Применение\u2026</string>
+
+    <!-- Show labels on icon -->
+    <string name="app_show_label_title">Подписи значков</string>
+    <string name="desktop_show_label_summary">Отображать подписи под значками на рабочем столе</string>
+    <string name="allapps_show_label_summary">Отображать подписи под значками в меню приложений</string>
+</resources>
