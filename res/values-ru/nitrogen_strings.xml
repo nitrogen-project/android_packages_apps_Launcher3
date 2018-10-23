@@ -37,6 +37,7 @@
     <!-- Icon packs -->
     <string name="icon_pack">Набор значков</string>
     <string name="icon_pack_summary">Измените вид значков ваших приложений</string>
+    <string name="icon_pack_none">По умолчанию</string>
 
     <!-- Icon shape -->
     <string name="icon_shape_override_label_custom">Форма значков</string>
