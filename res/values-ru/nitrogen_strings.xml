@@ -41,6 +41,7 @@
 
     <!-- Icon shape -->
     <string name="icon_shape_override_label_custom">Форма значков</string>
+    <string name="icon_shape_rounded_square">Квадрат с закругленными углами</string>
 
     <!-- Icon size -->
     <string name="icon_size_title">Размер значков</string>
