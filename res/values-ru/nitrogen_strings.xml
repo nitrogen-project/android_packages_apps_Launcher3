@@ -66,12 +66,10 @@
     <string name="state_loading">Применение\u2026</string>
 
     <!-- Hidden apps -->
-    <string name="customize">Настроить</string>
-    <string name="hide_app">Скрыть приложение</string>
-    <string name="hide_app_sum">Скрыть из меню приложений</string>
-    <string name="hide_app_selected">&#160;выбрано</string>
-    <string name="hidden_app">Скытое приложение</string>
-    <string name="hide_selected">Скрыть выбранное приложения</string>
+    <string name="hide_app">Скрытие приложений</string>
+    <string name="hide_app_sum">Настройки скрытия из меню приложений</string>
+    <string name="hidden_app">Все приложения</string>
+    <string name="hide_selected">Скрыть выбранные приложения</string>
     <string name="more">Больше</string>
 
     <!-- Show labels on icon -->
