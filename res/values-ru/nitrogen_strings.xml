@@ -65,6 +65,15 @@
     <string name="number_of_hotseat_title">Количество значков док-бара</string>
     <string name="state_loading">Применение\u2026</string>
 
+    <!-- Hidden apps -->
+    <string name="customize">Настроить</string>
+    <string name="hide_app">Скрыть приложение</string>
+    <string name="hide_app_sum">Скрыть из меню приложений</string>
+    <string name="hide_app_selected">&#160;выбрано</string>
+    <string name="hidden_app">Скытое приложение</string>
+    <string name="hide_selected">Скрыть выбранное приложения</string>
+    <string name="more">Больше</string>
+
     <!-- Show labels on icon -->
     <string name="app_show_label_title">Подписи значков</string>
     <string name="desktop_show_label_summary">Отображать подписи под значками на рабочем столе</string>
