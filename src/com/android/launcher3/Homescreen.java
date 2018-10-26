@@ -22,8 +22,8 @@ import static com.android.launcher3.states.RotationHelper.getAllowRotationDefaul
 import android.app.ActionBar;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -31,6 +31,8 @@ import android.preference.PreferenceFragment;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.SwitchPreference;
 import android.view.MenuItem;
+
+import com.android.internal.util.nitrogen.NitrogenUtils;
 
 public class Homescreen extends SettingsActivity implements PreferenceFragment.OnPreferenceStartFragmentCallback {
 
@@ -61,11 +63,15 @@ public class Homescreen extends SettingsActivity implements PreferenceFragment.O
 
         ActionBar actionBar;
 
+        private Context mContext;
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             getPreferenceManager().setSharedPreferencesName(LauncherFiles.SHARED_PREFERENCES_KEY);
             addPreferencesFromResource(R.xml.home_screen_preferences);
+
+            mContext = getActivity();
 
             actionBar=getActivity().getActionBar();
             assert actionBar != null;
@@ -77,7 +83,7 @@ public class Homescreen extends SettingsActivity implements PreferenceFragment.O
             SwitchPreference showSearchBar = (SwitchPreference)
                     findPreference(KEY_SHOW_SEARCHBAR);
 
-            if (!hasPackageInstalled(LauncherTab.SEARCH_PACKAGE)) {
+            if (!NitrogenUtils.isAvailableApp(LauncherTab.SEARCH_PACKAGE, mContext)) {
                 getPreferenceScreen().removePreference(feedIntegration);
                 getPreferenceScreen().removePreference(showSearchBar);
             }
@@ -161,16 +167,6 @@ public class Homescreen extends SettingsActivity implements PreferenceFragment.O
         @Override
         public boolean onPreferenceClick(Preference preference) {
             return false;
-        }
-
-        private boolean hasPackageInstalled(String pkgName) {
-            try {
-                ApplicationInfo ai = getContext().getPackageManager()
-                        .getApplicationInfo(pkgName, 0);
-                return ai.enabled;
-            } catch (PackageManager.NameNotFoundException e) {
-                return false;
-            }
         }
     }
 
