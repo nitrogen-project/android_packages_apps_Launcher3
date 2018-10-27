@@ -76,8 +76,6 @@ public class SettingsActivity extends Activity
     public static final String KEY_MINUS_ONE = "pref_enable_minus_one";
     public static final String KEY_TRUST_APPS = "pref_trust_apps";
 
-    public static boolean restartNeeded = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +98,16 @@ public class SettingsActivity extends Activity
     }
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        restartNeeded = true;
+        if (Utilities.KEY_SHOW_SEARCHBAR.equals(key)) {
+                LauncherAppState.getInstanceNoCreate().setNeedsRestart();
+        } else if (Utilities.KEY_DT_GESTURE.equals(key)) {
+                LauncherAppState.getInstanceNoCreate().setNeedsRestart();
+        } else  if (Utilities.KEY_NOTIFICATION_GESTURE.equals(key)) {
+                LauncherAppState.getInstanceNoCreate().setNeedsRestart();
+        } else if (KEY_FEED_INTEGRATION.equals(key)) {
+                LauncherAppState.getInstanceNoCreate().setNeedsRestart();
+        }
+
     }
 
     private boolean startFragment(String fragment, Bundle args, String key) {
@@ -159,14 +166,6 @@ public class SettingsActivity extends Activity
 
             getPreferenceManager().setSharedPreferencesName(LauncherFiles.SHARED_PREFERENCES_KEY);
             setPreferencesFromResource(R.xml.launcher_preferences, rootKey);
-
-            HomeKeyWatcher mHomeKeyListener = new HomeKeyWatcher(getActivity());
-            mHomeKeyListener.setOnHomePressedListener(() -> {
-                if (restartNeeded) {
-                    Utilities.restart(getActivity());
-                }
-            });
-            mHomeKeyListener.startWatch();
 
             PreferenceScreen screen = getPreferenceScreen();
             for (int i = screen.getPreferenceCount() - 1; i >= 0; i--) {
@@ -290,10 +289,10 @@ public class SettingsActivity extends Activity
                 mNotificationDotsObserver.unregister();
                 mNotificationDotsObserver = null;
             }
+            // if we don't press the home button but the back button to close Settings,
+            // then we must force a restart because the home button watcher wouldn't trigger it
+            LauncherAppState.getInstanceNoCreate().checkIfRestartNeeded();
             super.onDestroy();
-            if (restartNeeded) {
-                Utilities.restart(getActivity());
-            }
         }
     }
 }
