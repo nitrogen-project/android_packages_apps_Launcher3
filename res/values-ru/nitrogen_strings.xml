@@ -53,6 +53,11 @@
     <!-- Gestures -->
     <string name="allow_swipe_down_clearall_title">Очистить все в меню недавних приложений</string>
     <string name="allow_swipe_down_clearall_desc">Проведите вертикально вниз в меню недавних приложений для очистки всех приложений</string>
+    <string name="pref_homescreen_dt_gestures_title">Жесты по двойному нажатию</string>
+    <string name="pref_homescreen_dt_gestures_summary">Выберите действие по двойному нажатию на главном экране</string>
+    <string name="pref_homescreen_dt_gestures_none">Отключено</string>
+    <string name="pref_homescreen_dt_gestures_sleep">Режим сна</string>
+    <string name="pref_homescreen_dt_gestures_torch">Фонарик</string>
 
     <!-- Google Feed -->
     <string name="google_feed_title">Панель Google Now</string>
