@@ -83,4 +83,8 @@
     <string name="app_show_label_title">Подписи значков</string>
     <string name="desktop_show_label_summary">Отображать подписи под значками на рабочем столе</string>
     <string name="allapps_show_label_summary">Отображать подписи под значками в меню приложений</string>
+
+    <!-- Show searchbar -->
+    <string name="show_searchbar_title">Панель поиска</string>
+    <string name="show_searchbar_summary">Отображать панель поиска на главном экране</string>
 </resources>
