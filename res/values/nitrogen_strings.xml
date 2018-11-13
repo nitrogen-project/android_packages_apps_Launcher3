@@ -27,6 +27,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="settings_feed_title">Enable Google feed integration</string>
     <string name="settings_feed_summary">To the left of the main home screen</string>
 
+    <!-- Icon mask -->
+    <string name="legacy_icon_mask_title">Disable shape mask on legacy icons</string>
+    <string name="legacy_icon_mask_summary">Doesn\'t allow icons to be reshaped with adaptive icon mask. Icon pack must be reapplied after toggling</string>
+
     <!-- Gestures -->
     <string name="gestures_category">Gestures</string>
     <string name="allow_swipe_down_clearall_title">Clear all on swipe down from recents view</string>
