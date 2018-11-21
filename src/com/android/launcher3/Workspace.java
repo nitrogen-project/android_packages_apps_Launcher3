@@ -291,38 +291,37 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
                     android.Manifest.permission.DEVICE_POWER, null);
         mGestureMode = Integer.valueOf(
                 getDevicePrefs(getContext()).getString("pref_homescreen_dt_gestures", "0"));
-        mGestureListener =
-                new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onDoubleTap(MotionEvent event) {
-                triggerGesture(event);
-                return true;
-            }
 
+        // Touch Listener
+        mGestureListener = new GestureDetector(context, new OnSwipeListener(new OnSwipeListener.ISwipeListener() {
             @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                try {
-                    // skip horizontal unwanted swipes
-                    if (Math.abs(e1.getX() - e2.getX()) > 250) {
-                        return true;
-                    }
-                    if (e2.getY() - e1.getY() > 120/*min distance*/
-                            && Math.abs(velocityY) > 200/*min speed*/) {
+            public boolean onSwipe(OnSwipeListener.Direction direction) {
+                boolean handled = false;
+                    if (direction == OnSwipeListener.Direction.down) {
                         if(Utilities.useNotificationsGesture(context)) {
                             openNotifications();
+                            handled = true;
                         }
                     }
-                } catch (Exception e) {
+                return handled;
+            }
 
-                }
+            @Override
+            public boolean onSingleTap() {
+                return false;
+            }
+
+            @Override
+            public boolean onDoubleClick() {
+                triggerGesture();
                 return true;
             }
-        });
+        }));
 
         setOnTouchListener(new WorkspaceTouchListener(mLauncher, this));
     }
 
-    private void triggerGesture(MotionEvent event) {
+    private void triggerGesture() {
         switch(mGestureMode) {
             // Stock behavior
             case 0:
@@ -1014,6 +1013,7 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+	mGestureListener.onTouchEvent(event);
         return shouldConsumeTouch(v);
     }
 
