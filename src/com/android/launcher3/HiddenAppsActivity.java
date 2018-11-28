@@ -61,15 +61,13 @@ public class HiddenAppsActivity extends Activity implements MultiSelectRecyclerV
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-            case R.id.reset:
-                unhideHiddenApps();
-                recreate();
-                itemClicked = false;
-                break;
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home)
+            onBackPressed();
+        else if (itemId == R.id.reset) {
+             unhideHiddenApps();
+             recreate();
+             itemClicked = false;
         }
         return super.onOptionsItemSelected(item);
     }
