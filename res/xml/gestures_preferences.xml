@@ -12,7 +12,7 @@
         android:key="pref_notifications_gesture"
         android:title="@string/pref_notifications_gesture_title"
         android:summary="@string/pref_notifications_gesture_summary"
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:persistent="true"/>
 
     <ListPreference
