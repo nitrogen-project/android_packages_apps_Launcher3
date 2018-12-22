@@ -57,8 +57,10 @@
     <string name="pref_homescreen_dt_gestures_title">Жесты по двойному нажатию</string>
     <string name="pref_homescreen_dt_gestures_summary">Выберите действие по двойному нажатию на главном экране</string>
     <string name="pref_homescreen_dt_gestures_none">Отключено</string>
-    <string name="pref_homescreen_dt_gestures_sleep">Режим сна</string>
+    <string name="pref_homescreen_dt_gestures_sleep">Отключение экрана</string>
     <string name="pref_homescreen_dt_gestures_torch">Фонарик</string>
+    <string name="pref_homescreen_dt_gestures_google">Вызов поиска Google</string>
+    <string name="pref_homescreen_dt_gestures_google_toast">Поиск Google не установлен</string>
     <string name="pref_notifications_gesture_title">Вызов панели уведомлений</string>
     <string name="pref_notifications_gesture_summary">Проведите вниз на главном экране для вызова панели уведомлений</string>
 
