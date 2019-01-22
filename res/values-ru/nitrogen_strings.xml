@@ -45,11 +45,6 @@
 
     <!-- Icon size -->
     <string name="icon_size_title">Размер значков</string>
-    <string name="icon_size_extra_small">Очень маленькие</string>
-    <string name="icon_size_small">Маленькие</string>
-    <string name="icon_size_average">По умолчанию</string>
-    <string name="icon_size_large">Большие</string>
-    <string name="icon_size_extra_large">Очень большие</string>
 
     <!-- Gestures -->
     <string name="allow_swipe_down_clearall_title">Очистить все в меню недавних приложений</string>
