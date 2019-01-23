@@ -36,4 +36,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="pref_dt_gesture_title">Жест двойного нажатия</string>
     <string name="pref_dt_gesture_summary">Двойное нажатие на пустом месте выключает экран</string>
 
+    <!-- Trust apps -->
+    <string name="trust_apps_manager_name">Скрытые &amp; Защищенные приложения</string>
+    <string name="trust_apps_auth_manager">Разблокируйте для управления скрытыми и защищенными приложениями</string>
+    <string name="trust_apps_auth_open_app">Авторизуйтесь для запуска %1$s</string>
+    <string name="trust_apps_loading">Загрузка\u2026</string>
+    <string name="trust_apps_no_lock_error">Пожалуйста, настройте защищенный экран блокировки для ограничения доступа к приложениям</string>
+    <string name="trust_apps_help">Помощь</string>
+    <string name="trust_apps_info_hidden">Скрытые приложения и их виджеты будут спрятаны с рабочего стола</string>
+    <string name="trust_apps_info_protected">Защищенные прилоежния требуют авторизацию при запуске</string>
+
 </resources>
