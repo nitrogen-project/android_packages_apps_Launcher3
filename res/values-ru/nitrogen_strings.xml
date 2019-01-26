@@ -89,4 +89,8 @@
     <!-- Show searchbar -->
     <string name="show_searchbar_title">Панель поиска</string>
     <string name="show_searchbar_summary">Отображать панель поиска на главном экране</string>
+
+    <!-- Lock desktop -->
+    <string name="lock_desktop_title">Заблокировать рабочий стол</string>
+    <string name="lock_desktop_summary">Предотвращать изменения рабочего стола</string>
 </resources>
