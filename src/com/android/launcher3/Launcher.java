@@ -2551,6 +2551,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
                     client.getEventInfo().parse("setClientOptions ", client.mFlags);
                 }
             }
+            LauncherAppState.getInstanceNoCreate().setNeedsRestart();
         }
 
         if ("pref_iconPackPackage".equals(key)) {
