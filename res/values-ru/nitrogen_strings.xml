@@ -34,10 +34,6 @@
     <string name="home_grid_title">Сетка приложений</string>
     <string name="icon_layout_title">Внешний вид значков</string>
 
-    <!-- Icon labels -->
-    <string name="allapps_long_labels_title">Длинные подписи приложений</string>
-    <string name="allapps_long_labels_summary">Разрешать отображение подписей приложений в две строки</string>
-
     <!-- Icon packs -->
     <string name="icon_pack">Набор значков</string>
     <string name="icon_pack_summary">Измените вид значков ваших приложений</string>
