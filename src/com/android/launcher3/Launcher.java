@@ -58,6 +58,7 @@ import android.os.Process;
 import android.os.StrictMode;
 import android.os.UserHandle;
 import android.support.annotation.Nullable;
+import android.support.v4.graphics.ColorUtils;
 import android.text.TextUtils;
 import android.text.method.TextKeyListener;
 import android.util.Log;
@@ -133,6 +134,9 @@ import com.android.launcher3.widget.WidgetListRowEntry;
 import com.android.launcher3.widget.WidgetsFullSheet;
 import com.android.launcher3.widget.custom.CustomWidgetParser;
 
+import com.android.launcher3.uioverrides.WallpaperColorInfo;
+import com.android.launcher3.uioverrides.WallpaperColorInfo.OnChangeListener;
+import com.android.launcher3.util.Themes;
 import com.google.android.libraries.gsa.launcherclient.ClientOptions;
 import com.google.android.libraries.gsa.launcherclient.ClientService;
 import com.google.android.libraries.gsa.launcherclient.LauncherClient;
@@ -259,6 +263,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
     // Feed integration
     private LauncherTab mLauncherTab;
     private boolean mFeedIntegrationEnabled;
+    private final Bundle mUiInformation = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -343,6 +348,10 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
 
         mFeedIntegrationEnabled = isFeedIntegrationEnabled();
         mLauncherTab = new LauncherTab(this, mFeedIntegrationEnabled);
+        mUiInformation.putInt("system_ui_visibility", getWindow().getDecorView().getSystemUiVisibility());
+        WallpaperColorInfo instance = WallpaperColorInfo.getInstance(this);
+        instance.addOnChangeListener(this);
+        onExtractedColorsChanged(instance);
 
         setContentView(mLauncherView);
         getRootView().dispatchInsets();
@@ -1304,6 +1313,18 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
         }
 
         TraceHelper.endSection("NEW_INTENT");
+    }
+
+    public static int primaryColor(WallpaperColorInfo wallpaperColorInfo, Context context, int alpha) {
+        return compositeAllApps(ColorUtils.setAlphaComponent(wallpaperColorInfo.getMainColor(), alpha), context);
+    }
+
+    public static int secondaryColor(WallpaperColorInfo wallpaperColorInfo, Context context, int alpha) {
+        return compositeAllApps(ColorUtils.setAlphaComponent(wallpaperColorInfo.getSecondaryColor(), alpha), context);
+    }
+
+    public static int compositeAllApps(int color, Context context) {
+        return ColorUtils.compositeColors(Themes.getAttrColor(context, R.attr.allAppsScrimColor), color);
     }
 
     @Override
@@ -2503,6 +2524,16 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
     public interface OnResumeCallback {
 
         void onLauncherResume();
+    }
+
+    @Override
+    public void onExtractedColorsChanged(WallpaperColorInfo wallpaperColorInfo) {
+        int alpha = getResources().getInteger(R.integer.extracted_color_gradient_alpha);
+        mUiInformation.putInt("background_color_hint", primaryColor(wallpaperColorInfo, this, alpha));
+        mUiInformation.putInt("background_secondary_color_hint", secondaryColor(wallpaperColorInfo, this, alpha));
+        mUiInformation.putBoolean("is_background_dark", Themes.getAttrBoolean(this, R.attr.isMainColorDark));
+
+        mLauncherTab.getClient().redraw(mUiInformation);
     }
 
     @Override
