@@ -42,6 +42,18 @@
     <string name="icon_pack">Набор значков</string>
     <string name="icon_pack_summary">Измените вид значков ваших приложений</string>
     <string name="icon_pack_none">По умолчанию</string>
+    <string name="edit_drop_target_label">Редактировать</string>
+    <string name="edit_hint">Подпись значка</string>
+    <string name="reset_icon">Сброс</string>
+    <string name="customize">Настройка</string>
+    <string name="visual">Видимые</string>
+    <string name="all_icons">Все значки</string>
+    <string name="similar_icons">Похожие значки</string>
+    <string name="ok">Ок</string>
+    <string name="icon_label">Ярлык</string>
+    <string name="loading">Идет загрузка, пожалуйста, подождите</string>
+    <string name="icon_chooser">Выбор значка</string>
+    <string name="icon_search">Поиск значков</string>
 
     <!-- Icon shape -->
     <string name="icon_shape_override_label_custom">Форма значков</string>
