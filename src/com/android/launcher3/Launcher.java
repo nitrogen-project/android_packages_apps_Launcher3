@@ -2621,8 +2621,14 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
         final int popupWidth = res.getDimensionPixelSize(R.dimen.edit_dialog_min_width);
 
         Pair<List<String>, List<String>> iconPacks = mIconsHandler.getAllIconPacks();
-        ListPopupWindow listPopupWindow = new ListPopupWindow(new ContextThemeWrapper(this, R.style.EditIconStyle));
-        listPopupWindow.setAdapter(new ArrayAdapter(new ContextThemeWrapper(this, R.style.EditIconDialogStyle),
+        ListPopupWindow listPopupWindow = new ListPopupWindow(new ContextThemeWrapper(this,
+                Themes.getAttrBoolean(this, R.attr.isMainColorDark)
+                ? R.style.EditIconStyle_Dark
+                : R.style.EditIconStyle));
+        listPopupWindow.setAdapter(new ArrayAdapter(new ContextThemeWrapper(this,
+                Themes.getAttrBoolean(this, R.attr.isMainColorDark)
+                ? R.style.EditIconStyle_Dark
+                : R.style.EditIconStyle),
                 R.layout.edit_dialog_item, iconPacks.second));
         listPopupWindow.setWidth(popupWidth);
         listPopupWindow.setAnchorView(mPackageIcon);
@@ -2640,7 +2646,10 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
             }
         });
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.EditIconDialogStyle))
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,
+                Themes.getAttrBoolean(this, R.attr.isMainColorDark)
+                ? R.style.EditIconStyle_Dark
+                : R.style.EditIconStyle))
                 .setView(mIconPackView)
                 .setTitle(getString(R.string.edit_drop_target_label))
                 .setOnDismissListener(new DialogInterface.OnDismissListener() {

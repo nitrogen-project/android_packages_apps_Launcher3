@@ -18,13 +18,6 @@
 
 <resources>
     <!-- Icon pack -->
-    <style name="EditIconDialogStyle">
-        <item name="android:backgroundTint">?attr/popupColorSecondary</item>
-        <item name="android:outlineProvider">none</item>
-    </style>
-
-    <style name="EditIconStyle">
-        <item name="android:backgroundTint">?attr/popupItemColor</item>
-        <item name="android:outlineProvider">none</item>
-    </style>
+    <style name="EditIconStyle" parent="@android:style/Theme.DeviceDefault.Light.Dialog" />
+    <style name="EditIconStyle.Dark" parent="@android:style/Theme.DeviceDefault.Dialog" />
 </resources>
