@@ -54,6 +54,8 @@
     <string name="loading">Идет загрузка, пожалуйста, подождите</string>
     <string name="icon_chooser">Выбор значка</string>
     <string name="icon_search">Поиск значков</string>
+    <!-- Toast message for alerting users that no icon packs are available. -->
+    <string name="msg_no_icon_pack">Нет доступных наборов значков</string>
 
     <!-- Icon shape -->
     <string name="icon_shape_override_label_custom">Форма значков</string>
