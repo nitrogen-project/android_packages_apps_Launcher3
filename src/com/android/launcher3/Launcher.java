@@ -288,10 +288,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
 
     // Icon pack
     private AlertDialog mIconPackDialog;
-    private EditText mEditText;
-    private ImageView mPackageIcon;
     private IconsHandler mIconsHandler;
-    private View mIconPackView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -2603,11 +2600,11 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
     public void startEdit(final ItemInfo info, final ComponentName component) {
         LauncherActivityInfo app = LauncherAppsCompat.getInstance(this)
                 .resolveActivity(info.getIntent(), info.user);
-        mIconPackView = getLayoutInflater().inflate(R.layout.edit_dialog, null);
-        mPackageIcon = (ImageView) mIconPackView.findViewById(R.id.package_icon);
-        mEditText = (EditText) mIconPackView.findViewById(R.id.editText);
-        mEditText.setText(mIconCache.getCacheEntry(app).title);
-        mEditText.setSelection(mEditText.getText().length());
+        View iconPackView = getLayoutInflater().inflate(R.layout.edit_dialog, null);
+        ImageView packageIcon = (ImageView) iconPackView.findViewById(R.id.package_icon);
+        EditText editText = (EditText) iconPackView.findViewById(R.id.editText);
+        editText.setText(mIconCache.getCacheEntry(app).title);
+        editText.setSelection(editText.getText().length());
 
         // Package name of application selected.
         final String packageName = component.getPackageName();
@@ -2616,7 +2613,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
         // Get the icon applied for the icon selected from cache.
         final Bitmap appliedIcon = mIconCache.getNonNullIcon(mIconCache.getCacheEntry(app), info.user);
         // Set the dialog package preview
-        mPackageIcon.setImageBitmap(appliedIcon);
+        packageIcon.setImageBitmap(appliedIcon);
 
         final int popupWidth = res.getDimensionPixelSize(R.dimen.edit_dialog_min_width);
 
@@ -2631,18 +2628,12 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
                 : R.style.EditIconStyle),
                 R.layout.edit_dialog_item, iconPacks.second));
         listPopupWindow.setWidth(popupWidth);
-        listPopupWindow.setAnchorView(mPackageIcon);
+        listPopupWindow.setAnchorView(packageIcon);
         listPopupWindow.setModal(true);
         listPopupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Intent intent = new Intent(Launcher.this, ChooseIconActivity.class);
-                ChooseIconActivity.setItemInfo(info);
-                intent.putExtra("app_package", packageName);
-                intent.putExtra("app_label", mEditText.getText().toString());
-                intent.putExtra("icon_pack_package", iconPacks.first.get(position));
-                Launcher.this.startActivity(intent);
-                mIconPackDialog.dismiss();
+                performListPopupClick(info, editText, packageName, iconPacks, position);
             }
         });
 
@@ -2650,7 +2641,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
                 Themes.getAttrBoolean(this, R.attr.isMainColorDark)
                 ? R.style.EditIconStyle_Dark
                 : R.style.EditIconStyle))
-                .setView(mIconPackView)
+                .setView(iconPackView)
                 .setTitle(getString(R.string.edit_drop_target_label))
                 .setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
@@ -2664,7 +2655,7 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             // Only apply label.
-                            mIconCache.addCustomInfoToDataBase(info, mEditText.getText());
+                            mIconCache.addCustomInfoToDataBase(info, editText.getText());
                             mIconPackDialog.dismiss();
                         }
                 });
@@ -2678,15 +2669,16 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
                 });
 
         mIconPackDialog = builder.create();
-        mPackageIcon.setOnClickListener(new View.OnClickListener() {
+        packageIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!iconPacks.second.isEmpty()) {
-                    // Open up the pop-up.
-                    listPopupWindow.show();
                     // If we only have one icon pack we should just open the first element.
                     if (iconPacks.second.size() == 1) {
-                        listPopupWindow.performItemClick(/* position */ 0);
+                        performListPopupClick(info, editText, packageName, iconPacks, 0);
+                    } else {
+                        // Open up the pop-up.
+                        listPopupWindow.show();
                     }
                 // If we don't have any icon pack, alert the user with a small toast.
                 } else {
@@ -2697,5 +2689,16 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
         });
 
         mIconPackDialog.show();
+    }
+
+    private void performListPopupClick(ItemInfo info, EditText editText, String packageName,
+            Pair<List<String>,List<String>> iconPacks, int position) {
+        Intent intent = new Intent(Launcher.this, ChooseIconActivity.class);
+        ChooseIconActivity.setItemInfo(info);
+        intent.putExtra("app_package", packageName);
+        intent.putExtra("app_label", editText.getText().toString());
+        intent.putExtra("icon_pack_package", iconPacks.first.get(position));
+        Launcher.this.startActivity(intent);
+        mIconPackDialog.dismiss();
     }
 }
