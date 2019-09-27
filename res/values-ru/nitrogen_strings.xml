@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Gestures -->
+    <string name="pref_dt_gesture_title">Жест двойного нажатия</string>
+    <string name="pref_dt_gesture_summary">Двойное нажатие на пустом месте выключает экран</string>
+</resources>
