@@ -126,6 +126,7 @@
         <attr name="numAllAppsColumns" format="integer" />
         <attr name="defaultLayoutId" format="reference" />
         <attr name="demoModeLayoutId" format="reference" />
+        <attr name="numColumnsAllApps" format="integer" />
     </declare-styleable>
 
     <declare-styleable name="ProfileDisplayOption">

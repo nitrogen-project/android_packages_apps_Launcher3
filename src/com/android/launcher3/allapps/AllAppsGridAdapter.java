@@ -205,7 +205,7 @@ public class AllAppsGridAdapter extends RecyclerView.Adapter<AllAppsGridAdapter.
     }
 
     public void setAppsPerRow(int appsPerRow) {
-        mAppsPerRow = appsPerRow;
+        mAppsPerRow = mLauncher.getDeviceProfile().inv.numColumnsAllApps;
         mGridLayoutMgr.setSpanCount(mAppsPerRow);
     }
 
