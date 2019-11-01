@@ -33,6 +33,7 @@ import android.view.animation.Interpolator;
 
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherAppState;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.LauncherStateManager.AnimationConfig;
 import com.android.launcher3.R;
@@ -87,6 +88,7 @@ public class NavBarToHomeTouchController implements TouchController, SwipeDetect
         }
 
         onControllerTouchEvent(ev);
+        LauncherAppState.getInstanceNoCreate().checkIfRestartNeeded();
         return mSwipeDetector.isDraggingOrSettling();
     }
 
