@@ -976,6 +976,8 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
     protected void onResume() {
         RaceConditionTracker.onEvent(ON_RESUME_EVT, ENTER);
         TraceHelper.beginSection("ON_RESUME");
+        LauncherAppState.getInstanceNoCreate().checkIfRestartNeeded();
+        TraceHelper.partitionSection("ON_RESUME", "checkIfRestartNeeded");
         super.onResume();
         TraceHelper.partitionSection("ON_RESUME", "superCall");
 
