@@ -27,6 +27,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="settings_feed_title">Панель Google Feed</string>
     <string name="settings_feed_summary">Отображать слева от главного экрана</string>
 
+    <!-- Icon packs -->
+    <string name="icon_pack">Набор значков</string>
+    <string name="icon_pack_summary">Выбрать пользовательский набор значков</string>
+
+    <!-- Icon mask -->
+    <string name="legacy_icon_mask_title">Отключить адаптивную маску</string>
+    <string name="legacy_icon_mask_summary">Не разрешать применять адаптивную маску для значков. Требуется заново выбрать набор значков после изменения этой опции</string>
+
     <!-- Gestures -->
     <string name="gestures_category">Жесты</string>
     <string name="allow_swipe_down_clearall_title">Закрыть все недавние приложения</string>
