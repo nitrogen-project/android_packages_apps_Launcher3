@@ -332,11 +332,7 @@ public class DeviceProfile {
         allAppsIconTextSizePx = iconTextSizePx;
         allAppsIconSizePx = iconSizePx;
         allAppsIconDrawablePaddingPx = iconDrawablePaddingPx;
-        // all apps should have constant row height and not follow workspace
-        int topBottomPadding = allAppsIconDrawablePaddingPx * (isVerticalBarLayout() ? 2 : 1);
-        allAppsCellHeightPx = allAppsIconSizePx + allAppsIconDrawablePaddingPx
-                + Utilities.calculateTextHeight(allAppsIconTextSizePx)
-                + topBottomPadding * 2;
+        allAppsCellHeightPx = getCellSize().y;
 
         if (isVerticalLayout) {
             // Always hide the Workspace text with vertical bar layout.

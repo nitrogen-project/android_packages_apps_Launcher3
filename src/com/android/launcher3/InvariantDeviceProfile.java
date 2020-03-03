@@ -90,9 +90,6 @@ public class InvariantDeviceProfile {
      */
     public int numRows;
     public int numColumns;
-    
-    /* in all apps */
-    public int numColumnsAllApps;
 
     /**
      * Number of icons per row and column in the folder.
@@ -145,7 +142,6 @@ public class InvariantDeviceProfile {
         demoModeLayoutId = p.demoModeLayoutId;
         mExtraAttrs = p.mExtraAttrs;
         mOverlayMonitor = p.mOverlayMonitor;
-        numColumnsAllApps = p.numColumnsAllApps;
     }
 
     @TargetApi(23)
@@ -207,7 +203,6 @@ public class InvariantDeviceProfile {
         numFolderRows = closestProfile.numFolderRows;
         numFolderColumns = closestProfile.numFolderColumns;
         mExtraAttrs = closestProfile.extraAttrs;
-        numColumnsAllApps = closestProfile.numColumnsAllApps;
 
         if (!closestProfile.name.equals(gridName)) {
             Utilities.getPrefs(context).edit()
@@ -305,8 +300,7 @@ public class InvariantDeviceProfile {
                 numColumns != oldProfile.numColumns ||
                 numFolderColumns != oldProfile.numFolderColumns ||
                 numFolderRows != oldProfile.numFolderRows ||
-                numHotseatIcons != oldProfile.numHotseatIcons ||
-                numColumnsAllApps != oldProfile.numColumnsAllApps) {
+                numHotseatIcons != oldProfile.numHotseatIcons) {
             changeFlags |= CHANGE_FLAG_GRID;
         }
 
@@ -495,7 +489,6 @@ public class InvariantDeviceProfile {
         public final String name;
         public final int numRows;
         public final int numColumns;
-        public final int numColumnsAllApps;
 
         private final int numFolderRows;
         private final int numFolderColumns;
@@ -524,8 +517,6 @@ public class InvariantDeviceProfile {
                     R.styleable.GridDisplayOption_numFolderRows, numRows);
             numFolderColumns = a.getInt(
                     R.styleable.GridDisplayOption_numFolderColumns, numColumns);
-            numColumnsAllApps = a.getInt(R.styleable.GridDisplayOption_numColumnsAllApps, 0);
-
             a.recycle();
 
             extraAttrs = Themes.createValueMap(context, attrs,
