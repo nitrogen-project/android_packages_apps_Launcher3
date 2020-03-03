@@ -38,6 +38,7 @@ import com.android.launcher3.settings.HomeKeyWatcher;
 import com.android.launcher3.util.MainThreadInitializedObject;
 import com.android.launcher3.util.Preconditions;
 import com.android.launcher3.util.SecureSettingsObserver;
+import com.android.launcher3.widget.custom.CustomWidgetManager;
 
 import com.android.internal.util.nitrogen.NitrogenUtils;
 
@@ -183,6 +184,8 @@ public class LauncherAppState {
     LauncherModel setLauncher(Launcher launcher) {
         getLocalProvider(mContext).setLauncherProviderChangeListener(launcher);
         mModel.initialize(launcher);
+        CustomWidgetManager.INSTANCE.get(launcher)
+                .setWidgetRefreshCallback(mModel::refreshAndBindWidgetsAndShortcuts);
         return mModel;
     }
 

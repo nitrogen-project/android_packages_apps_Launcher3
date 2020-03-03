@@ -1,7 +1,5 @@
 package com.android.launcher3.popup;
 
-import static com.android.launcher3.userevent.nano.LauncherLogProto.Action;
-import static com.android.launcher3.userevent.nano.LauncherLogProto.ControlType;
 
 import android.app.ActivityOptions;
 import android.content.Context;
@@ -9,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
@@ -21,24 +18,30 @@ import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.BaseDraggingActivity;
 import com.android.launcher3.ItemInfo;
 import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherSettings;
 import com.android.launcher3.R;
 import com.android.launcher3.WorkspaceItemInfo;
-import com.android.launcher3.Utilities;
+import com.android.launcher3.config.FeatureFlags;
+import com.android.launcher3.model.AppLaunchTracker;
 import com.android.launcher3.model.WidgetItem;
+import com.android.launcher3.userevent.nano.LauncherLogProto.Action;
+import com.android.launcher3.userevent.nano.LauncherLogProto.ContainerType;
+import com.android.launcher3.userevent.nano.LauncherLogProto.ControlType;
 import com.android.launcher3.util.InstantAppResolver;
 import com.android.launcher3.util.PackageManagerHelper;
 import com.android.launcher3.util.PackageUserKey;
 import com.android.launcher3.widget.WidgetsBottomSheet;
 
 import java.util.List;
-
 /**
  * Represents a system shortcut for a given app. The shortcut should have a label and icon, and an
  * onClickListener that depends on the item that the shortcut services.
  *
  * Example system shortcuts, defined as inner classes, include Widgets and AppInfo.
+ * @param <T>
  */
-public abstract class SystemShortcut<T extends BaseDraggingActivity> extends ItemInfo {
+public abstract class SystemShortcut<T extends BaseDraggingActivity>
+        extends ItemInfo {
     private final int mIconResId;
     private final int mLabelResId;
     private final Icon mIcon;
@@ -204,6 +207,27 @@ public abstract class SystemShortcut<T extends BaseDraggingActivity> extends Ite
         }
     }
 
+    public static class DismissPrediction extends SystemShortcut<Launcher> {
+        public DismissPrediction() {
+            super(R.drawable.ic_remove_no_shadow, R.string.dismiss_prediction_label);
+        }
+
+        @Override
+        public View.OnClickListener getOnClickListener(Launcher activity, ItemInfo itemInfo) {
+            if (!FeatureFlags.ENABLE_PREDICTION_DISMISS.get()) return null;
+            if (itemInfo.container != LauncherSettings.Favorites.CONTAINER_PREDICTION) return null;
+            return (view) -> {
+                PopupContainerWithArrow.closeAllOpenViews(activity);
+                activity.getUserEventDispatcher().logActionOnControl(Action.Touch.TAP,
+                        ControlType.DISMISS_PREDICTION, ContainerType.DEEPSHORTCUTS);
+                AppLaunchTracker.INSTANCE.get(view.getContext())
+                        .onDismissApp(itemInfo.getTargetComponent(),
+                                itemInfo.user,
+                                AppLaunchTracker.CONTAINER_PREDICTIONS);
+            };
+        }
+    }
+
     public static class Uninstall extends SystemShortcut {
         public Uninstall() {
             super(R.drawable.ic_uninstall_no_shadow, R.string.uninstall_drop_target_label);
@@ -214,7 +238,7 @@ public abstract class SystemShortcut<T extends BaseDraggingActivity> extends Ite
                 BaseDraggingActivity activity, ItemInfo itemInfo) {
             // Get application information.
             String packageName = itemInfo.getTargetComponent().getPackageName();
-            boolean isSystemApp = Utilities.isSystemApp(activity.getApplicationContext(),
+            boolean isSystemApp = PackageManagerHelper.isSystemApp(activity.getApplicationContext(),
                     packageName);
             // Do not show the uninstall action if it's a system app.
             if (isSystemApp) {
