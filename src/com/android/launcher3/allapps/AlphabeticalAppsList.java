@@ -144,7 +144,7 @@ public class AlphabeticalAppsList implements AllAppsStore.OnUpdateListener {
         mLauncher = BaseDraggingActivity.fromContext(context);
         mAppNameComparator = new AppInfoComparator(context);
         mIsWork = isWork;
-        mNumAppsPerRow = mLauncher.getDeviceProfile().inv.numColumnsAllApps;
+        mNumAppsPerRow = mLauncher.getDeviceProfile().inv.numColumns;
         mAllAppsStore.addUpdateListener(this);
     }
 
